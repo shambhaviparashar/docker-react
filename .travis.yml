@@ -1,0 +1,10 @@
+sudo: required
+language: generic
+services:
+    -docker
+
+before_install:
+    - docker build -t shambhavipar/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true shambhavipar/docker-react npm run test
